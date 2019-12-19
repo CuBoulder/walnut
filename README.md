@@ -26,7 +26,7 @@ CU Custom Pantheon Orchestration Tool
   FLASK_DEBUG=1 FLASK_APP=run.py flask run
   ```
 
-# Running the application locally via uWSGI
+* Running the application locally via uWSGI
   ```sh
   uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi
   ```
