@@ -19,12 +19,18 @@ CU Custom Pantheon Orchestration Tool
   pip install -r requirements.txt
   ```
 
-* Start Flask
+* Running the application locally via Flask
 
   ```sh
   # Debug mode allows live-reload to work
   FLASK_DEBUG=1 FLASK_APP=run.py flask run
   ```
+
+# Running the application locally via uWSGI
+  ```sh
+  uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi
+  ```
+
 * Alternate Fish shell Quickstart
  
   ```sh
