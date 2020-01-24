@@ -696,6 +696,6 @@ $conf["smtp_client_hostname"] = "{{smtp_client_hostname}}";
 $conf["smtp_password"] = "{{smtp_password}}";
 
 // simpleSAMLphp library location.
-$conf['simplesamlphp_auth_installdir'] = $_ENV['HOME'] . '/code/private/simplesamlphp-1.17.6';
+$conf['simplesamlphp_auth_installdir'] = $_ENV['HOME'] . '/code/private/simplesamlphp-1.17.7';
 
 );
