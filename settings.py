@@ -29,11 +29,7 @@ DOMAIN = {
             # TODO: Should we use this in the unique names for Pantheon and subdomains that we need for the Advanced CDN? Maybe something like: ucb-[sid].colorado.edu
             # TODO: Talk with NEO about the best way to handle requests for a thousand subdomains.
             "sid": {"type": "string", "minlength": 9, "maxlength": 14, "unique": True},
-            "tag": {
-                "type": "list",
-                "allowed": ["group1", "group2"],
-                "default": ["group1"]
-                },
+            "tag": {"type": "list"},
             # TODO: Path + instance type needs to be unique
             "path": {"type": "string"},
             # TODO: Verify that there is a 1 to 1 (or many to 1) correlation between 'instance_type' and public subdomain
