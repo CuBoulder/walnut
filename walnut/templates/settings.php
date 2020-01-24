@@ -677,6 +677,10 @@ $conf['file_scan_ignore_directories'] = array(
   'bower_components',
 );
 
+$conf["install_profile"] = "express";
+$conf["cu_sid"] = "{{sid}}";
+$conf['sn_key'] = "{{sn_key}}";
+
 // Google Data
 {% if google_cse_csx -%}
 $conf["google_cse_cx"] = "{{google_cse_csx}}";
