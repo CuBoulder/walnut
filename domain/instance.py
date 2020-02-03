@@ -1,4 +1,7 @@
+from auth import RolesAuth
+
 instance = {
+    'authentication': RolesAuth,
     "public_methods": ["GET"],
     "public_item_methods": ["GET"],
     "versioning": True,

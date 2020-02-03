@@ -1,8 +1,8 @@
-from auth import RolesAuth
+from auth import BCryptAuth
 
 
 accounts = {
-    'authentication': RolesAuth,
+    'authentication': BCryptAuth,
     'public_methods': [],
     'resource_methods': ['GET', 'POST'],
     'hateoas': False,
