@@ -1,6 +1,5 @@
 import os
 from domain import DOMAIN
-from auth import Sha1Auth
 
 
 MONGO_HOST = os.environ.get("MONGO_HOST", "localhost")

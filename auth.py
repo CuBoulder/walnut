@@ -1,27 +1,35 @@
+import bcrypt
 from eve import Eve
 from eve.auth import BasicAuth, TokenAuth
-from werkzeug.security import check_password_hash
 from flask import current_app as app
+import secrets
 
 
-class WalnutTokenAuth(TokenAuth):
-    def check_auth(self, token, allowed_roles, resource, method):
-        """
-        :param token: decoded user name.
-        :param allowed_roles: allowed user roles
-        :param resource: resource being requested.
-        :param method: HTTP method being executed(POST, GET, etc.)
-        """
-
+class RolesAuth(TokenAuth):
+    def check_auth(self, token,  allowed_roles, resource, method):
         # use Eve's own db driver; no additional connections/resources are used
         accounts = app.data.driver.db['accounts']
-        return accounts.find_one({'token': token})
+        lookup = {'token': token}
+        if allowed_roles:
+            # only retrieve a user if his roles match ``allowed_roles``
+            lookup['roles'] = {'$in': allowed_roles}
+        account = accounts.find_one(lookup)
+        return account
 
 
-class Sha1Auth(BasicAuth):
+def add_token(documents):
+    """
+    Appends a random string encoded in base64 format to a user document
+    """
+    # TODO: You should at least make sure that the token is unique.
+    for document in documents:
+        document["token"] = secrets.token_urlsafe()
+
+
+class BCryptAuth(BasicAuth):
     def check_auth(self, username, password, allowed_roles, resource, method):
         # use Eve's own db driver; no additional connections/resources are used
         accounts = app.data.driver.db['accounts']
         account = accounts.find_one({'username': username})
         return account and \
-            check_password_hash(account['password'], password)
+            bcrypt.hashpw(password, account['password']) == account['password']
