@@ -27,15 +27,35 @@ CU Custom Pantheon Orchestration Tool
   ```
 
 * Running the application locally via uWSGI
+
   ```sh
   uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi
   ```
 
 * Alternate Fish shell Quickstart
- 
+
   ```sh
   python3 -m venv env
   source env/bin/activate.fish
   pip install -r requirements.txt
   env FLASK_DEBUG=1 FLASK_APP=run.py flask run
   ```
+
+## Authentication
+
+This application assumes there is a mongoDB database named `walnut` with a collection named `accounts`.
+
+The initial user is created manually by inserting a document into `accounts`.
+
+* Password must be stored as a bcrpyt hash
+
+* Token should be generated using the Python 3.6+ secrets library.
+
+* Initial user role should be set to `superuser`
+
+
+## Endpoints
+
+`instance`
+
+`accounts`
