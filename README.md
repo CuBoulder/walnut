@@ -4,7 +4,7 @@ CU Custom Pantheon Orchestration Tool
 
 ## Quickstart
 
-* Install Python 3.7 [Homebrew](https://docs.python-guide.org/starting/install3/osx/)
+* Install Python 3.7+ [Homebrew](https://docs.python-guide.org/starting/install3/osx/)
 * Install and start MongoDB 4.2 [Homebrew](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
 * Create and activate a venv [Python Guide](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
 
@@ -43,19 +43,50 @@ CU Custom Pantheon Orchestration Tool
 
 ## Authentication
 
-This application assumes there is a mongoDB database named `walnut` with a collection named `accounts`.
-
 The initial user is created manually by inserting a document into `accounts`.
 
-* Password must be stored as a bcrpyt hash
+This application assumes there is a MongoDB database named `walnut` with a collection named `accounts`.
 
-* Token should be generated using the Python 3.6+ secrets library.
+First you must:
+
+* Generate a password and hash it using bcrpyt
+
+    ```python
+    import bcrypt
+    print(bcrypt.hashpw("your_password", bcrypt.gensalt()))
+    ````
 
 * Initial user role should be set to `superuser`
+
+Mongo CLI Commands to create first user:
+
+```mongodb
+use walnut
+
+db.createCollection(accounts)
+
+db.accounts.insert({
+   username: 'superuser',
+   password: 'hashed_password',
+   role: 'superuser'
+})
+```
 
 
 ## Endpoints
 
-`instance`
+### instance
 
-`accounts`
+Description: The collection of Express instances hosted on Pantheon
+
+Public Methods: `GET`
+
+Authentication: `Token Auth`
+
+Authenticated Methods: `POST, DELETE`
+
+### accounts
+
+Authentication: `Basic Auth (Username, Password)`
+
+Authenticated Methods: `POST, DELETE`
