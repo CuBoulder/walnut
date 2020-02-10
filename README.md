@@ -1,6 +1,6 @@
 # walnut
 
-CU Custom Pantheon Orchestration Tool 
+CU Custom Pantheon Orchestration Tool
 
 ## Quickstart
 
@@ -71,7 +71,6 @@ db.accounts.insert({
    role: 'superuser'
 })
 ```
-
 
 ## Endpoints
 

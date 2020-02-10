@@ -1,5 +1,4 @@
 import bcrypt
-from eve import Eve
 from eve.auth import BasicAuth, TokenAuth
 from flask import current_app as app
 import secrets
@@ -12,6 +11,7 @@ class BCryptAuth(BasicAuth):
         account = accounts.find_one({'username': username})
         return account and \
             bcrypt.hashpw(password, account['password']) == account['password']
+
 
 class RolesAuth(TokenAuth):
     def check_auth(self, token,  allowed_roles, resource, method):
