@@ -22,8 +22,8 @@ accounts = {
     # Allow 'token' to be returned with POST responses
     'extra_response_fields': ['token'],
 
-    # Only allow superusers and admins.
-    'allowed_roles': ['superuser', 'admin'],
+    # Only allow developers and admins.
+    'allowed_roles': ['developer', 'admin'],
 
     # Finally, let's add the schema definition for this endpoint.
     'schema': {
@@ -38,7 +38,7 @@ accounts = {
         },
         'roles': {
             'type': 'string',
-            'allowed': ['user', 'superuser', 'admin'],
+            'allowed': ['user', 'developer', 'admin'],
             'required': True,
         },
         'token': {

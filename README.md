@@ -43,34 +43,63 @@ CU Custom Pantheon Orchestration Tool
 
 ## Authentication
 
+This application requires a MongoDB database named `walnut` with a collection named `accounts` for user management.
+
+Available user roles are `user`, `developer`, `admin`.
+
 The initial user is created manually by inserting a document into `accounts`.
 
-This application assumes there is a MongoDB database named `walnut` with a collection named `accounts`.
+### Creating the admin user
 
-First you must:
+1. Generate a hashed password using the Python3 library `bcrypt`
 
-* Generate a password and hash it using bcrpyt
+    * Start the Python shell
 
-    ```python
-    import bcrypt
-    print(bcrypt.hashpw("your_password", bcrypt.gensalt()))
-    ````
+      ```shell
+      python
+      ```
 
-* Initial user role should be set to `superuser`
+    * Run the following commands:
 
-Mongo CLI Commands to create first user:
+      ```python
+      import bcrypt
 
-```mongodb
-use walnut
+      print(bcrypt.hashpw("password_to_be_hashed", bcrypt.gensalt()))
+      ```
 
-db.createCollection(accounts)
+      Save the hashed value that is printed for the next step.
 
-db.accounts.insert({
-   username: 'superuser',
-   password: 'hashed_password',
-   role: 'superuser'
-})
-```
+2. Use the following Mongo CLI Commands to create the `admin` user:
+
+    * Start the mongo shell
+
+      ```shell
+      mongo
+      ```
+
+    * Run the following commands:
+
+      ```mongodb
+      use walnut
+
+      db.createCollection(accounts)
+
+      db.accounts.insert({
+        username: 'admin',
+        password: 'hashed_password_from_step_1',
+        role: 'admin'
+      })
+      ```
+
+3. Create separate developer user
+
+Send a POST request to create your own account using `curl`
+
+  ```shell
+  curl -u admin -d '{"username":"identikey", "password":"your_password", "role":"developer"}' -H "Content-Type: application/json" -X POST http://localhost:5000/accounts
+  ```
+
+
 
 ## Endpoints
 
