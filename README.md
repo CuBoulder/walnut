@@ -93,13 +93,13 @@ The initial user is created manually by inserting a document into `accounts`.
 
 3. Create separate developer user
 
-Send a POST request to create your own account using `curl`
+    * Send a POST request to the `accounts` endpoint to create your own account using `curl`. Replace the values of `username`, `password`, `role` with your own.
 
-  ```shell
-  curl -u admin -d '{"username":"identikey", "password":"your_password", "role":"developer"}' -H "Content-Type: application/json" -X POST http://localhost:5000/accounts
-  ```
+      ```shell
+      curl -u admin -d '{"username":"your_identikey", "password":"your_password", "role":"developer"}' -H "Content-Type: application/json" -X POST http://localhost:5000/accounts
+      ```
 
-
+      You should get a `201 CREATED` response that includes a `token` field. This is the token your new account will use to authenticate with, so don't lose it.
 
 ## Endpoints
 
