@@ -55,13 +55,13 @@ Public Methods: `GET`
 
 Authentication: `Token Auth`
 
-Authenticated Methods: `POST, DELETE`
+Authenticated Methods: `GET`, `PATCH`, `PUT`, `DELETE`.
 
 ### `accounts`
 
 Authentication: `Basic Auth (Username, Password)`
 
-Authenticated Methods: `POST, DELETE`
+Authenticated Methods: `GET`, `PATCH`, `PUT`, `DELETE`
 
 ---
 
