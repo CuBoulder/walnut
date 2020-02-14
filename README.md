@@ -2,6 +2,8 @@
 
 CU Custom Pantheon Orchestration Tool
 
+---
+
 ## Quickstart
 
 * Install Python 3.7+ [Homebrew](https://docs.python-guide.org/starting/install3/osx/)
@@ -41,11 +43,31 @@ CU Custom Pantheon Orchestration Tool
   env FLASK_DEBUG=1 FLASK_APP=run.py flask run
   ```
 
+---
+
+## Endpoints
+
+### `instance`
+
+Description: The collection of Express instances hosted on Pantheon
+
+Public Methods: `GET`
+
+Authentication: `Token Auth`
+
+Authenticated Methods: `POST, DELETE`
+
+### `accounts`
+
+Authentication: `Basic Auth (Username, Password)`
+
+Authenticated Methods: `POST, DELETE`
+
+---
+
 ## Authentication
 
 This application requires a MongoDB database named `walnut` with a collection named `accounts` for user management.
-
-Available user roles are `user`, `developer`, `admin`.
 
 The initial user is created manually by inserting a document into `accounts`.
 
@@ -91,30 +113,14 @@ The initial user is created manually by inserting a document into `accounts`.
       })
       ```
 
-3. Create separate developer user
+### Create separate developer user
 
-    * Send a POST request to the `accounts` endpoint to create your own account using `curl`. Replace the values of `username`, `password`, `role` with your own.
+  1. Send a POST request to the `accounts` endpoint to create your own account using `curl`. Replace the values of `username`, `password`, `role` with your own.
+
+      * Available user roles are `user`, `developer`, and `admin`.
 
       ```shell
       curl -u admin -d '{"username":"your_identikey", "password":"your_password", "role":"developer"}' -H "Content-Type: application/json" -X POST http://localhost:5000/accounts
       ```
 
-      You should get a `201 CREATED` response that includes a `token` field. This is the token your new account will use to authenticate with, so don't lose it.
-
-## Endpoints
-
-### instance
-
-Description: The collection of Express instances hosted on Pantheon
-
-Public Methods: `GET`
-
-Authentication: `Token Auth`
-
-Authenticated Methods: `POST, DELETE`
-
-### accounts
-
-Authentication: `Basic Auth (Username, Password)`
-
-Authenticated Methods: `POST, DELETE`
+  2. You should get a `201 CREATED` response that includes a `token` field. This is the token your new account will use to authenticate with, so don't lose it.
