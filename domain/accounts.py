@@ -36,7 +36,7 @@ accounts = {
             'type': 'string',
             'required': True,
         },
-        'roles': {
+        'role': {
             'type': 'string',
             'allowed': ['user', 'developer', 'admin'],
             'required': True,
