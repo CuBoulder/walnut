@@ -33,7 +33,6 @@ checks:
 plugins:
   pep8:
     enabled: true
-engines:
   pylint:
     enabled: true
 exclude_patterns:
