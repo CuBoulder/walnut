@@ -1,9 +1,9 @@
 """Walnut Authentication Methods."""
 
+import secrets
 import bcrypt
 from eve.auth import BasicAuth, TokenAuth
 from flask import current_app as app
-import secrets
 
 
 class BCryptAuth(BasicAuth):
@@ -21,7 +21,7 @@ class BCryptAuth(BasicAuth):
 class RolesAuth(TokenAuth):
     """Custom authentication logic is provided by a subclass of eve.auth.BasicAuth."""
 
-    def check_auth(self, token,  allowed_roles, resource, method):
+    def check_auth(self, token, allowed_roles, resource, method):
         """Check if a token and role combination is valid."""
         # use Eve's own db driver; no additional connections/resources are used
         accounts = app.data.driver.db['accounts']
