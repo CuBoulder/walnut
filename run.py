@@ -1,4 +1,5 @@
 """Walnut Launch Script."""
+# pylint: disable=no-member
 
 from eve import Eve
 from auth import add_token, hash_password
