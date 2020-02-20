@@ -35,6 +35,9 @@ plugins:
     enabled: true
   pylint:
     enabled: true
+    checks:
+      import-error:
+        enabled: false
 exclude_patterns:
 - "config/"
 - "db/"
