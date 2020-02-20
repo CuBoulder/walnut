@@ -1,3 +1,5 @@
+"""Endpoint Definition for instance endpoint."""
+
 from auth import RolesAuth
 
 instance = {

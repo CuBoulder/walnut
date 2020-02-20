@@ -1,3 +1,5 @@
+"""Endpoint Definition for accounts endpoint."""
+
 from auth import BCryptAuth
 
 

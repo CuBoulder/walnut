@@ -1,3 +1,5 @@
+"""Walnut Authentication Methods."""
+
 import bcrypt
 from eve.auth import BasicAuth, TokenAuth
 from flask import current_app as app
@@ -5,8 +7,11 @@ import secrets
 
 
 class BCryptAuth(BasicAuth):
+    """Custom authentication logic is provided by a subclass of eve.auth.BasicAuth."""
+
     def check_auth(self, username, password, allowed_roles, resource, method):
-        # use Eve's own db driver; no additional connections/resources are used
+        """Check if a username and password combination is valid."""
+        # Use Eve's own db driver; no additional connections/resources are used
         accounts = app.data.driver.db['accounts']
         account = accounts.find_one({'username': username})
         return account and \
@@ -14,7 +19,10 @@ class BCryptAuth(BasicAuth):
 
 
 class RolesAuth(TokenAuth):
+    """Custom authentication logic is provided by a subclass of eve.auth.BasicAuth."""
+
     def check_auth(self, token,  allowed_roles, resource, method):
+        """Check if a token and role combination is valid."""
         # use Eve's own db driver; no additional connections/resources are used
         accounts = app.data.driver.db['accounts']
         lookup = {'token': token}
@@ -26,8 +34,9 @@ class RolesAuth(TokenAuth):
 
 
 def add_token(documents):
-    """
-    Appends a random string encoded in base64 format to a user document
+    """Generate and insert authentication token to a document.
+
+    Generates and inserts a random string encoded in base64 format to passed in document(s)
     """
     # TODO: You should at least make sure that the token is unique.
     for document in documents:
@@ -35,9 +44,7 @@ def add_token(documents):
 
 
 def hash_password(documents):
-    """
-    Use bcrypt to hash user password before writing it to the database
-    """
+    """Use bcrypt to hash user password before writing it to the database."""
     for document in documents:
         salt = bcrypt.gensalt()
         document["password"] = bcrypt.hashpw(document["password"], salt)
