@@ -2,7 +2,7 @@ version: "2"
 checks:
   argument-count:
     config:
-      threshold: 5 # Bumped to five for eve
+      threshold: 6 # Bumped to six for eve
   complex-logic:
     config:
       threshold: 4
