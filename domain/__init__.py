@@ -3,7 +3,7 @@
 from .instance import INSTANCE
 from .accounts import ACCOUNTS
 
-DOMAIN = {
+WALNUT_DOMAINS = {
     "instance": INSTANCE,
     "accounts": ACCOUNTS
 }

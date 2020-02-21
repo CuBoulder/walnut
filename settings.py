@@ -1,8 +1,9 @@
 """Walnut Eve API Settings."""
 
 import os
-from domain import DOMAIN
+from domain import WALNUT_DOMAINS
 
+DOMAIN = WALNUT_DOMAINS
 MONGO_HOST = os.environ.get("MONGO_HOST", "localhost")
 MONGO_PORT = os.environ.get("MONGO_PORT", 27017)
 MONGO_DBNAME = os.environ.get("MONGO_DBNAME", "walnut")
