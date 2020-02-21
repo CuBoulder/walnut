@@ -1,6 +1,6 @@
 """Launch Script for WSGI Server."""
 
-from run import APP as application
+from run import WALNUT as application
 
 if __name__ == "__main__":
     application.run()
