@@ -1,7 +1,9 @@
+"""Endpoint Definition for accounts endpoint."""
+
 from auth import BCryptAuth
 
 
-accounts = {
+ACCOUNTS = {
     'authentication': BCryptAuth,
     'public_methods': [],
     'resource_methods': ['GET', 'POST'],

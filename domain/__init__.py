@@ -1,7 +1,9 @@
-from .instance import instance
-from .accounts import accounts
+"""Walnut API Domain Definition, stored as a dictionary."""
 
-DOMAIN = {
-    "instance": instance,
-    "accounts": accounts
+from .instance import INSTANCE
+from .accounts import ACCOUNTS
+
+WALNUT_DOMAINS = {
+    "instance": INSTANCE,
+    "accounts": ACCOUNTS
 }
