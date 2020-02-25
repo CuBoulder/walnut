@@ -93,5 +93,11 @@ INSTANCE = {
         'google_tag_client_container_id': {
             'type': 'string'
             },
+        'created_by': {
+            'type': 'string'
+        },
+        'modified_by': {
+            'type': 'string'
+            },
     },
 }
