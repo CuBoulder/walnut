@@ -48,3 +48,10 @@ def hash_password(documents):
     for document in documents:
         salt = bcrypt.gensalt()
         document["password"] = bcrypt.hashpw(document["password"], salt)
+
+
+def look_up_user_by_token(token):
+    """Return username tied to an auth token."""
+    accounts = app.data.driver.db['accounts']
+    account = accounts.find_one({'token': token})
+    return account["username"]
