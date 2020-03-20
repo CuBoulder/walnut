@@ -102,15 +102,15 @@ The initial user is created manually by inserting a document into `accounts`.
     * Run the following commands:
 
       ```mongodb
-      use walnut
+      use walnut;
 
-      db.createCollection(accounts)
+      db.createCollection("accounts");
 
       db.accounts.insert({
         username: 'admin',
         password: 'hashed_password_from_step_1',
         role: 'admin'
-      })
+      });
       ```
 
 ### Create separate developer user
