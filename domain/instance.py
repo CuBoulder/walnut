@@ -84,6 +84,15 @@ INSTANCE = {
                 'e'
             ],
         },
+        'pantheon_live_url': {
+            'type': 'string'
+        },
+        'pantheon_dashboard_url': {
+            'type': 'string'
+        },
+        'colorado_subdomain_url': {
+            'type': 'string'
+        },
         'cse_creator': {
             'type': 'string'
             },
