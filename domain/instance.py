@@ -73,6 +73,9 @@ INSTANCE = {
                 'facility',
             ],
         },
+        'pantheon_site_id': {
+            'type': 'string'
+        },
         'pantheon_size': {
             'type': 'string',
             'allowed': [
