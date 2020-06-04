@@ -5,9 +5,9 @@ python:
 install:
   - pip install requests
   - pip install -r requirements.txt
-  - ufw status
+  - sudo ufw status
   - sudo ufw allow 5000
-  - ufw enable
+  - sudo ufw enable
 
   - uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi &
 
