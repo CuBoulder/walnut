@@ -1,4 +1,4 @@
-"""Travis-CI GET Tests."""
+"""Travis-CI Instance Enpoint Tests."""
 import requests
 
 
