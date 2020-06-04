@@ -2,13 +2,13 @@ language: python
 
 python:
     - 3.7
+services: 
+    - mongodb
+
 install:
   - pip install requests
   - pip install -r requirements.txt
-#   - sudo apt update
-#   - sudo apt install -y mongodb
-  - sudo systemctl status mongodb
-  - mongo --eval 'db.runCommand({ connectionStatus: 1 })'
+
 #   - sudo ufw status
 #   - sudo ufw allow 5000
 #   - sudo ufw --force enable
