@@ -9,7 +9,6 @@ install:
   - sudo ufw allow 5000
   - sudo ufw --force enable
 
-  - (uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi)
-
 script:
+    - (uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi)
     - pytest
