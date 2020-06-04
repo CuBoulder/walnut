@@ -5,9 +5,12 @@ python:
 install:
   - pip install requests
   - pip install -r requirements.txt
-  - sudo ufw status
-  - sudo ufw allow 5000
-  - sudo ufw --force enable
+  - sudo apt install -y mongodb
+  - sudo systemctl status mongodb
+  - mongo --eval 'db.runCommand({ connectionStatus: 1 })'
+#   - sudo ufw status
+#   - sudo ufw allow 5000
+#   - sudo ufw --force enable
 
 script:
     - uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi &
