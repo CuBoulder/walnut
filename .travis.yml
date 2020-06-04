@@ -4,8 +4,12 @@ python:
     - 3.7
 install:
   - pip install requests
+  - sudo apt install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
   - pip install -r requirements.txt
+  - ufw status
   - sudo ufw allow 5000
+  - ufw enable
+
   - uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi &
 
 script:
