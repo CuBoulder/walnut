@@ -2,14 +2,17 @@
 import requests
 
 
-def test_get_instance_endpoint():
-    """Test that /instance endpoint is working and returns a 200 response."""
-    url = "http://127.0.0.1:5000/instance"
-    # convert dict to json by json.dumps() for body data.
-    response = requests.get(url)
+class TestInstanceEndpoint:
+    """Instance Endpoint test suite."""
 
-    # Validate response headers and body contents, e.g. status code.
-    assert response.status_code == 200
+    def test_get_instance_endpoint(self):
+        """Test that /instance endpoint is working and returns a 200 response."""
+        url = "http://127.0.0.1:5000/instance"
+        # convert dict to json by json.dumps() for body data.
+        response = requests.get(url)
 
-    # print response full body as text
-    print(response.text)
+        # Validate response headers and body contents, e.g. status code.
+        assert response.status_code == 200
+
+        # print response full body as text
+        print(response.text)
