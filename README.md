@@ -8,11 +8,18 @@ CU Custom Pantheon Orchestration Tool
 
 * Install Python 3.7+ [Homebrew](https://docs.python-guide.org/starting/install3/osx/)
 * Install and start MongoDB 4.2 [Homebrew](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
-* Create and activate a venv [Python Guide](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+	- Make sure the service is running with ```` brew services start mongodb-community@4.2 ````
+	- Stop the DB with ```` brew services stop mongodb-community@4.2 ````
+* Clone this repository
+* Create and activate a venv [Python Guide](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) inside of the repo
 
   ```sh
   python3 -m venv env
+  #activate the virtual environment with
   source env/bin/activate
+  
+  #leave the environment with
+  deactivate
   ```  
 
 * Install requirements
@@ -67,7 +74,7 @@ Authenticated Methods: `GET`, `PATCH`, `PUT`, `DELETE`
 
 ## Authentication
 
-This application requires a MongoDB database named `walnut` with a collection named `accounts` for user management.
+This application requires a MongoDB database named `walnut` with a collection named `accounts` for user management. An admin user must be created before a developer role can be added.
 
 The initial user is created manually by inserting a document into `accounts`.
 
@@ -104,7 +111,7 @@ The initial user is created manually by inserting a document into `accounts`.
       ```mongodb
       use walnut
 
-      db.createCollection(accounts)
+      db.createCollection("accounts")
 
       db.accounts.insert({
         username: 'admin',
@@ -124,3 +131,6 @@ The initial user is created manually by inserting a document into `accounts`.
       ```
 
   2. You should get a `201 CREATED` response that includes a `token` field. This is the token your new account will use to authenticate with, so don't lose it.
+
+## Extra
+- A [GUI for Mongo](https://www.mongodb.com/products/compass)
